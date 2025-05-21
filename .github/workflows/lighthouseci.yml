@@ -8,11 +8,14 @@ jobs:
   lhci:
     runs-on: ubuntu-latest
     steps:
-      - name: Run Lighthouse on deployed site
+      - name: Install Lighthouse CI
         run: |
           npm install -g @lhci/cli@0.13.x
-          lhci autorun \
-            --collect.settings.url="https://connorm-55.github.io/cayman/" \
-            --assert.assertions.performance="error=0,warning=90" \
-            --assert.assertions.accessibility="error=0,warning=90" \
-            --upload.target=temporary-public-storage
+      - name: Run Lighthouse CI on live site
+        run: |
+          lhci collect --url=https://connorm-55.github.io/cayman/ \
+            --settings.onlyCategories=performance,accessibility \
+            --settings.emulatedFormFactor=desktop
+          lhci assert --assertions.performance=warning=90,error=0 \
+                      --assertions.accessibility=warning=90,error=0
+          lhci upload --target=temporary-public-storage
