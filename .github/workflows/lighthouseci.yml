@@ -1,0 +1,25 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  lhci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun \
+            --collect.settings.url="https://connorm-55.github.io/cayman/" \
+            --assert.assertions.performance="error=0,warning=90" \
+            --assert.assertions.accessibility="error=0,warning=90" \
+            --upload.target=temporary-public-storage
