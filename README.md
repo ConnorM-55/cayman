@@ -1,6 +1,7 @@
 # The Cayman theme
 
-![Lighthouse CI](https://github.com/ConnorM-55/cayman/actions/workflows/lighthouseci.yml/badge.svg)
+[![Lighthouse CI](https://github.com/ConnorM-55/cayman/actions/workflows/lighthouseci.yml/badge.svg)](https://github.com/ConnorM-55/cayman/actions/workflows/lighthouseci.yml)
+
  
 *Cayman is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/cayman), or even [use it today](#usage).*
 
